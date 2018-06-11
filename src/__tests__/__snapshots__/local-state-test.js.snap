@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components should be able to use local state to manage updates 1`] = `
+"Counter: 0++++++++++++++++++++++++++++++++++++++++
+"
+`;
+
+exports[`components should be able to use local state to manage updates 2`] = `
+"Counter: 1++++++++++++++++++++++++++++++++++++++++
+"
+`;

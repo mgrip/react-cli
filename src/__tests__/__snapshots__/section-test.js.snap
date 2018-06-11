@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sections should be able to align text center 1`] = `
+"+++++++++++++++++++Center text++++++++++++++++++++
+"
+`;
+
+exports[`sections should be able to align text left 1`] = `
+"Left text+++++++++++++++++++++++++++++++++++++++++
+"
+`;
+
+exports[`sections should be able to align text right 1`] = `
+"++++++++++++++++++++++++++++++++++++++++Right text
+"
+`;
+
+exports[`sections should be able to render horizontally 1`] = `
+"Column 1+++++++++++++++++Column 2+++++++++++++++++
+"
+`;
+
+exports[`sections should be able to render vertically 1`] = `
+"Row 1+++++++++++++++++++++++++++++++++++++++++++++
+Row 2+++++++++++++++++++++++++++++++++++++++++++++
+"
+`;

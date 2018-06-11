@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Columns and rows should work together 1`] = `
+"Some text+++++++++++++++++++++++++++++++++++++++++
+Column A++++++++Column B++++++++Column C++++++++
+Other text++++++++++++++++++++++++++++++++++++++++
+"
+`;
+
+exports[`Columns should work nested within other columns 1`] = `
+"Column A++++++++Column B++++++++Column C++++++++
+++++++++++++++++++Some++++And+++++++++++++++++++
++++++++++++++++++other+++heres++++++++++++++++++
+++++++++++++++++++text++++the+++++++++++++++++++
+++++++++++++++++++that+++other++++++++++++++++++
++++++++++++++++++should++column+++++++++++++++++
+++++++++++++++++probably++++++++++++++++++++++++
+++++++++++++++++++wrap++++++++++++++++++++++++++
+"
+`;

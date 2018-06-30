@@ -1,8 +1,10 @@
 {
   "name": "react-cli-renderer",
-  "version": "0.0.0-development",
+  "version": "0.1.0",
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "license": "MIT",
   "private": false,
   "devDependencies": {

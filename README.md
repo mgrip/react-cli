@@ -1,4 +1,4 @@
-# ReactCLI 🚞
+# ReactCLI 👑
 
 👋
 
@@ -9,13 +9,13 @@ ReactCLI is a react renderer for the command line. All of the benefits of React,
 ### yarn
 
 ```bash
-yarn add react-cli-renderer
+yarn add react react-cli-renderer
 ```
 
 ### npm
 
 ```bash
-npm install --save react-cli-renderer
+npm install --save react react-cli-renderer
 ```
 
 ### How it works
@@ -39,9 +39,7 @@ ReactCLI.render(
 );
 ```
 
-### Details
-
-#### Premise
+#### About
 
 ReactCLI is analogous to ReactDOM or ReactNative. It takes the tree of nodes determined by React and the React reconciler, and renders that content to the command line. This means that you get all of the core features of React for free, like stateful components, context, refs, etc - in addition to being able to use third party libraries for things like state management.
 
@@ -60,7 +58,7 @@ ReactCLI provides two components for building command line interfaces.
   ```
 
 - break
-  Break components allow you to define columns and/or rows within a section.
+  Break components allow you to define columns and/or rows within a section (as opposed to using nested sections).
 
   ```javascript
   <div>

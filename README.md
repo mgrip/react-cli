@@ -1,4 +1,4 @@
-# ReactCLI 👑
+# ReactCLI
 
 👋
 
@@ -41,7 +41,7 @@ ReactCLI.render(
 
 #### About
 
-ReactCLI is analogous to ReactDOM or ReactNative. It takes the tree of nodes determined by React and the React reconciler, and renders that content to the command line. This means that you get all of the core features of React for free, like stateful components, context, refs, etc - in addition to being able to use third party libraries for things like state management.
+ReactCLI is analogous to ReactDOM or ReactNative. It just renders any updates dictated by React and the React reconciler to the command line. This means that you get all of the core features of React for free, like stateful components, context, refs, etc - in addition to being able to use third party libraries for things like state management. In addition, it provides a couple core components that are useful for building out command line interfaces.
 
 #### Components
 

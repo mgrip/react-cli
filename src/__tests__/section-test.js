@@ -71,3 +71,56 @@ test("sections should be able to align text center", done => {
     "+"
   );
 });
+
+test("sections should be able to render a border", done => {
+  ReactCLI.render(
+    <div>
+      <div
+        align="center"
+        border={{
+          horizontal: "-",
+          vertical: "|",
+          cornerTopLeft: "*",
+          cornerTopRight: "*",
+          cornerBottomLeft: "*",
+          cornerBottomRight: "*"
+        }}
+      >
+        Test section with border
+      </div>
+    </div>,
+    undefined,
+    50,
+    outputString => {
+      expect(outputString).toMatchSnapshot();
+      done();
+    },
+    "+"
+  );
+
+  ReactCLI.render(
+    <div horizontal border={{ horizontal: "*", vertical: "*" }}>
+      Some Text
+      <div
+        align="center"
+        border={{
+          horizontal: "-",
+          vertical: "|",
+          cornerTopLeft: "*",
+          cornerTopRight: "*",
+          cornerBottomLeft: "*",
+          cornerBottomRight: "*"
+        }}
+      >
+        Test section with border
+      </div>
+    </div>,
+    undefined,
+    50,
+    outputString => {
+      expect(outputString).toMatchSnapshot();
+      done();
+    },
+    "+"
+  );
+});

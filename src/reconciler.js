@@ -1,6 +1,6 @@
 // @flow strict
 
-import { Section, Text, Break } from "./index";
+import { Section, Text, Break } from "./components";
 import Reconciler from "react-reconciler";
 
 const ReconcilerConfig = {
@@ -14,7 +14,11 @@ const ReconcilerConfig = {
       case Break.type:
         return new Break();
       case Section.type:
-        return new Section(props.horizontal, props.align);
+        return new Section({
+          useHorizontalOrientation: props.horizontal,
+          align: props.align,
+          border: props.border
+        });
       default:
         // throw error?
         return false;

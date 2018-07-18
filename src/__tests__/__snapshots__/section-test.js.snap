@@ -15,6 +15,23 @@ exports[`sections should be able to align text right 1`] = `
 "
 `;
 
+exports[`sections should be able to render a border 1`] = `
+"--------------------------------------------------
+|++++++++++++Test section with border++++++++++++|
+--------------------------------------------------
+"
+`;
+
+exports[`sections should be able to render a border 2`] = `
+"**************************************************
+*Some Text+++++++++++++++-------------------------*
+*++++++++++++++++++++++++|+++Test section with+++|*
+*++++++++++++++++++++++++|++++++++border+++++++++|*
+*++++++++++++++++++++++++-------------------------*
+**************************************************
+"
+`;
+
 exports[`sections should be able to render horizontally 1`] = `
 "Column 1+++++++++++++++++Column 2+++++++++++++++++
 "

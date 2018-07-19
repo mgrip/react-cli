@@ -4,6 +4,40 @@ ReactCLI is a react renderer for the command line. All of the benefits of React,
 
 ![react-cli-demo](/.github/demo.svg)
 
+```javascript
+const ReactCLI = require("./index");
+const React = require("react");
+const chalk = require("chalk");
+
+class MyReactCLIApp extends React.Component {
+  state = {
+    step: 0
+  };
+
+  render() {
+    return (
+      <div border={{ horizontal: "*", vertical: "*" }} align="center">
+        My {chalk.blue("New")} {chalk.magenta("ReactCLI App")} 🚀
+        <div horizontal>
+          <div align="center">
+            {this.state.step >= 1 ? chalk.green("✔︎") : "◯"} Step 1
+            <br />
+            {this.state.step >= 2 ? chalk.green("✔︎") : "◯"} Step 2
+            <br />
+            {this.state.step >= 3 ? chalk.green("✔︎") : "◯"} Step 3
+          </div>
+          <div border={{ horizontal: "-", vertical: "|" }} align="center">
+            Number of steps done:{" "}
+            {chalk.bold.magenta(this.state.step.toString())}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+```
+
 ## Getting started
 
 ### yarn

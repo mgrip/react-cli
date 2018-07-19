@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Horizontal sections should render as columns 1`] = `
-"1st column++++++2nd column++++++3rd column++++++
+"1st column++++++2nd column++++++3rd column++++++++
 "
 `;

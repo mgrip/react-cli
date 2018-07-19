@@ -1,8 +1,8 @@
 # ReactCLI
 
-👋
-
 ReactCLI is a react renderer for the command line. All of the benefits of React, right in your terminal.
+
+![react-cli-demo](https://raw.githubusercontent.com/mgrip/react-cli/master/.github/demo.svg)
 
 ## Getting started
 

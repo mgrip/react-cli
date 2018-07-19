@@ -1,8 +1,10 @@
 {
   "name": "react-cli-renderer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "license": "MIT",
   "private": false,
   "devDependencies": {
@@ -31,8 +33,7 @@
   },
   "scripts": {
     "build": "babel src/ -d lib/",
-    "demo":
-      "svg-term --command 'node lib/demo.js' --out .github/demo.svg --window --from 50 --to 5000 --width 60 --height 8 --term hyper --profile hyper-chesterish",
+    "demo": "svg-term --command 'node lib/demo.js' --out .github/demo.svg --window --from 50 --to 5000 --width 60 --height 8 --term hyper --profile hyper-chesterish",
     "prepublish": "yarn run build",
     "test": "yarn run jest"
   },

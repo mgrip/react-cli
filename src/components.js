@@ -1,11 +1,5 @@
 // @flow strict
 
-import wrapAnsiNewLine from "wrap-ansi";
-// this module is helpful for dealing with ansi characters, but it returns a
-// string with embedded new lines. We need it as an array, so we'll split it here
-const wrapAnsi = (input: string, columns: number): Array<string> =>
-  wrapAnsiNewLine(input, columns).split("\n");
-
 class Border {
   vertical: ?string;
   horizontal: ?string;
@@ -86,10 +80,6 @@ export class Section {
     this.orientation = useHorizontalOrientation ? "horizontal" : "vertical";
     this.align = align;
     this.border = new Border(border);
-  }
-
-  convertTextToArray(text: Text, totalWidth: number): Array<string> {
-    return wrapAnsi(text.text, totalWidth - this.border.horizontalWidth());
   }
 }
 

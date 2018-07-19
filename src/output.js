@@ -1,6 +1,12 @@
 // @flow strict
 
 import { Section, Text, Break } from "./components";
+import stripAnsi from "strip-ansi";
+import wrapAnsiNewLine from "wrap-ansi";
+// this module is helpful for dealing with ansi characters, but it returns a
+// string with embedded new lines. We need it as an array, so we'll split it here
+const wrapAnsi = (input: string, columns: number): Array<string> =>
+  wrapAnsiNewLine(input, columns).split("\n");
 
 function combineChildren(section: Section): Array<Text | Section | Break> {
   // If we have multiple text nodes in a row, first combine them into one
@@ -54,11 +60,16 @@ class RowOutput {
     this.rows = combinedChildren.reduce((acc, child) => {
       if (child instanceof Section) {
         return acc.concat(
-          getOutputFromSection({ section: child, width: width })
+          getOutputFromSection({
+            section: child,
+            width: width - this.section.border.horizontalWidth()
+          })
         );
       } else if (child instanceof Text) {
         return acc.concat(
-          new TextOutput(section.convertTextToArray(child, width))
+          new TextOutput(
+            wrapAnsi(child.text, width - this.section.border.horizontalWidth())
+          )
         );
       }
       return acc;
@@ -74,24 +85,30 @@ class RowOutput {
 
   padText({ text, spacing }: { text: string, spacing: string }): string {
     const border = this.section.border.vertical || "";
+    const innerWidth = this.width - this.section.border.horizontalWidth();
 
     let innerText;
     switch (this.section.align) {
       case "left":
-        innerText = text.padEnd(this.width - border.length * 2, spacing);
+        innerText =
+          text + "".padStart(innerWidth - stripAnsi(text).length, spacing);
         break;
       case "right":
-        innerText = text.padStart(this.width - border.length * 2, spacing);
+        innerText =
+          "".padStart(innerWidth - stripAnsi(text).length, spacing) + text;
         break;
       default:
-        innerText = text
-          .padStart(
-            (this.width - border.length * 2) / 2 + text.length / 2,
+        innerText =
+          "".padStart((innerWidth - stripAnsi(text).length) / 2, spacing) +
+          text +
+          "".padStart(
+            (innerWidth - stripAnsi(text).length) / 2 +
+              ((innerWidth - stripAnsi(text).length) % 2),
             spacing
-          )
-          .padEnd(this.width - border.length * 2, spacing);
+          );
         break;
     }
+    // @TODO: need to handle if the corners are wider than the border
     return border + innerText + border;
   }
 
@@ -190,17 +207,23 @@ class ColumnOutput {
       (acc, child) => (child instanceof Break ? acc : acc + 1),
       0
     );
-    this.columns = combinedChildren.reduce((acc, child) => {
+    this.columns = combinedChildren.reduce((acc, child, index) => {
+      let childWidth = Math.floor(
+        (width - this.section.border.horizontalWidth()) / columnNumber
+      );
+      if (index === combinedChildren.length - 1) {
+        childWidth +=
+          (width - this.section.border.horizontalWidth()) % columnNumber;
+      }
       if (child instanceof Section) {
         return acc.concat(
-          getOutputFromSection({ section: child, width: width / columnNumber })
+          getOutputFromSection({
+            section: child,
+            width: childWidth
+          })
         );
       } else if (child instanceof Text) {
-        return acc.concat(
-          new TextOutput(
-            section.convertTextToArray(child, width / columnNumber)
-          )
-        );
+        return acc.concat(new TextOutput(wrapAnsi(child.text, childWidth)));
       }
       return acc;
     }, []);
@@ -223,31 +246,40 @@ class ColumnOutput {
     spacing: string,
     index: number
   }): string {
-    const border = this.section.border.vertical || "";
     const innerWidth = this.width - this.section.border.horizontalWidth();
-    let innerText;
+    let columnWidth = Math.floor(innerWidth / this.columns.length);
+    if (index == this.columns.length - 1) {
+      columnWidth += innerWidth % this.columns.length;
+    }
 
+    let innerText;
     switch (this.section.align) {
       case "left":
-        innerText = text.padEnd(innerWidth / this.columns.length, spacing);
+        innerText =
+          text + "".padStart(columnWidth - stripAnsi(text).length, spacing);
         break;
       case "right":
-        innerText = text.padStart(innerWidth / this.columns.length, spacing);
+        innerText =
+          "".padStart(columnWidth - stripAnsi(text).length, spacing) + text;
         break;
       default:
-        innerText = text
-          .padStart(
-            innerWidth / this.columns.length / 2 + text.length / 2,
+        innerText =
+          "".padStart((columnWidth - stripAnsi(text).length) / 2, spacing) +
+          text +
+          "".padStart(
+            (columnWidth - stripAnsi(text).length) / 2 +
+              ((columnWidth - stripAnsi(text).length) % 2),
             spacing
-          )
-          .padEnd(innerWidth / this.columns.length, spacing);
+          );
         break;
     }
+    const border = this.section.border.vertical || "";
     if (index === 0) {
       return border + innerText;
     } else if (index === this.columns.length - 1) {
       return innerText + border;
     }
+    // @TODO: need to handle if the corners are wider than the border
     return innerText;
   }
 

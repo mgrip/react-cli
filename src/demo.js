@@ -15,10 +15,8 @@ class MyReactCLIApp extends React.Component<{}, { step: number }> {
         My {chalk.blue("New")} {chalk.magenta("ReactCLI App")} 🚀
         <div horizontal>
           <div align="center">
-            {this.state.step >= 1 ? chalk.green("✔︎") : "◯"} Step 1
-            <br />
-            {this.state.step >= 2 ? chalk.green("✔︎") : "◯"} Step 2
-            <br />
+            {this.state.step >= 1 ? chalk.green("✔︎") : "◯"} Step 1<br />
+            {this.state.step >= 2 ? chalk.green("✔︎") : "◯"} Step 2<br />
             {this.state.step >= 3 ? chalk.green("✔︎") : "◯"} Step 3
           </div>
           <div border={{ horizontal: "-", vertical: "|" }} align="center">

@@ -39,11 +39,7 @@ TestRender(
     <br />
     <div horizontal>
       <div align="center" border={{ horizontal: "*", vertical: "*" }}>
-        ✔︎ Step 1
-        <br />
-        ◯ Step 2
-        <br />
-        ◯ Step 3
+        ✔︎ Step 1<br />◯ Step 2<br />◯ Step 3
       </div>
       <div border={{ horizontal: "-", vertical: "|" }}>
         Some messages for this app
@@ -66,8 +62,15 @@ TestRender(
           localhost:3000
         </div>
         <div align="center" border={{ horizontal: "-", vertical: "|" }}>
-          dev-server<br />(app bundle)<br />localhost:8080<br />websocket server
-          (for HMR)<br />localhost:8081
+          dev-server
+          <br />
+          (app bundle)
+          <br />
+          localhost:8080
+          <br />
+          websocket server (for HMR)
+          <br />
+          localhost:8081
         </div>
       </div>
     </div>

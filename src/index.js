@@ -52,16 +52,14 @@ class Console {
   }
 }
 
-export default {
-  render(
-    element: React.Node,
-    callback?: () => void,
-    width?: number,
-    handler?: (output: string) => void,
-    spacing?: string
-  ) {
-    const container = new Console({ handler, spacing, width });
-    const node = Reconciler.createContainer(container);
-    Reconciler.updateContainer(element, node, null, callback);
-  }
-};
+export default function render(
+  element: React.Node,
+  callback?: () => void,
+  width?: number,
+  handler?: (output: string) => void,
+  spacing?: string
+) {
+  const container = new Console({ handler, spacing, width });
+  const node = Reconciler.createContainer(container);
+  Reconciler.updateContainer(element, node, null, callback);
+}

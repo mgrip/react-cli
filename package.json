@@ -33,7 +33,7 @@
     "react": "^16.6.0"
   },
   "scripts": {
-    "build": "babel src/ -d lib/",
+    "build": "babel src/ -d lib/ --ignore '*/__tests__/*' && cp src/index.js.flow lib/",
     "demo": "svg-term --command 'node lib/demo.js' --out .github/demo.svg --window --from 50 --to 5000 --width 60 --height 8 --term hyper --profile hyper-chesterish",
     "prepublish": "yarn run build",
     "test": "yarn run jest"

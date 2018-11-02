@@ -5,7 +5,7 @@ import ReactCLI from "../../index";
 
 export default (testDescription: string, element: React.Node) => {
   test(testDescription, done => {
-    ReactCLI.render(
+    ReactCLI(
       element,
       undefined,
       50,

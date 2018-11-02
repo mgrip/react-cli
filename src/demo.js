@@ -30,7 +30,7 @@ class MyReactCLIApp extends React.Component<{}, { step: number }> {
 }
 
 const appReference = React.createRef();
-ReactCLI.render(<MyReactCLIApp ref={appReference} />, undefined, 60);
+ReactCLI(<MyReactCLIApp ref={appReference} />, undefined, 60);
 setTimeout(
   () => appReference.current && appReference.current.setState({ step: 1 }),
   1000

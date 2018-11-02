@@ -15,7 +15,7 @@ class TestComponent extends React.Component<{}, { count: number }> {
 const componentReference = React.createRef();
 let updateCount = 0;
 test("components should be able to use local state to manage updates", done => {
-  ReactCLI.render(
+  ReactCLI(
     <TestComponent ref={componentReference} />,
     () => {
       if (componentReference.current) {

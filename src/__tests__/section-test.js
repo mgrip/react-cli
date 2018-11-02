@@ -4,7 +4,7 @@ import * as React from "react";
 import ReactCLI from "../index";
 
 test("sections should be able to render horizontally", done => {
-  ReactCLI.render(
+  ReactCLI(
     <div horizontal>
       Column 1 <br /> Column 2
     </div>,
@@ -19,7 +19,7 @@ test("sections should be able to render horizontally", done => {
 });
 
 test("sections should be able to render vertically", done => {
-  ReactCLI.render(
+  ReactCLI(
     <div>
       Row 1 <br /> Row 2
     </div>,
@@ -34,7 +34,7 @@ test("sections should be able to render vertically", done => {
 });
 
 test("sections should be able to align text left", done => {
-  ReactCLI.render(
+  ReactCLI(
     <div align="left">Left text</div>,
     undefined,
     50,
@@ -47,7 +47,7 @@ test("sections should be able to align text left", done => {
 });
 
 test("sections should be able to align text right", done => {
-  ReactCLI.render(
+  ReactCLI(
     <div align="right">Right text</div>,
     undefined,
     50,
@@ -60,7 +60,7 @@ test("sections should be able to align text right", done => {
 });
 
 test("sections should be able to align text center", done => {
-  ReactCLI.render(
+  ReactCLI(
     <div align="center">Center text</div>,
     undefined,
     50,
@@ -73,7 +73,7 @@ test("sections should be able to align text center", done => {
 });
 
 test("sections should be able to render a border", done => {
-  ReactCLI.render(
+  ReactCLI(
     <div>
       <div
         align="center"
@@ -98,7 +98,7 @@ test("sections should be able to render a border", done => {
     "+"
   );
 
-  ReactCLI.render(
+  ReactCLI(
     <div horizontal border={{ horizontal: "*", vertical: "*" }}>
       Some Text
       <div

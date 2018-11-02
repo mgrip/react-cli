@@ -20,10 +20,8 @@ class MyReactCLIApp extends React.Component {
         My {chalk.blue("New")} {chalk.magenta("ReactCLI App")} 🚀
         <div horizontal>
           <div align="center">
-            {this.state.step >= 1 ? chalk.green("✔︎") : "◯"} Step 1
-            <br />
-            {this.state.step >= 2 ? chalk.green("✔︎") : "◯"} Step 2
-            <br />
+            {this.state.step >= 1 ? chalk.green("✔︎") : "◯"} Step 1<br />
+            {this.state.step >= 2 ? chalk.green("✔︎") : "◯"} Step 2<br />
             {this.state.step >= 3 ? chalk.green("✔︎") : "◯"} Step 3
           </div>
           <div border={{ horizontal: "-", vertical: "|" }} align="center">
@@ -36,6 +34,20 @@ class MyReactCLIApp extends React.Component {
   }
 }
 
+const appReference = React.createRef();
+ReactCLI(<MyReactCLIApp ref={appReference} />, undefined, 60);
+setTimeout(
+  () => appReference.current && appReference.current.setState({ step: 1 }),
+  1000
+);
+setTimeout(
+  () => appReference.current && appReference.current.setState({ step: 2 }),
+  2000
+);
+setTimeout(
+  () => appReference.current && appReference.current.setState({ step: 3 }),
+  3000
+);
 ```
 
 ## Getting started
@@ -77,8 +89,7 @@ ReactCLI provides two components for building command line interfaces.
 
   ```javascript
   <div>
-    Row 1
-    <br />
+    Row 1<br />
     Row 2
   </div>
   ```

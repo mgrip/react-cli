@@ -39,7 +39,7 @@
     "test": "yarn run jest"
   },
   "dependencies": {
-    "log-update": "^2.3.0",
+    "ansi-escapes": "^3.1.0",
     "react-reconciler": "^0.16.0",
     "strip-ansi": "^5.0.0",
     "wrap-ansi": "^4.0.0"

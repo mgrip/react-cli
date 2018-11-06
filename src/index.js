@@ -2,9 +2,15 @@
 
 import Reconciler from "./reconciler";
 import * as React from "react";
-import logUpdate from "log-update";
+import ansiEscapes from "ansi-escapes";
 import { Section } from "./components";
 import getOutputFromSection from "./output";
+
+let previousLineCount = 0;
+function writeToConsole(output: string) {
+  process.stdout.write(ansiEscapes.eraseLines(previousLineCount) + output);
+  previousLineCount = output.split("\n").length;
+}
 
 class Console {
   consoleWidth: number;
@@ -27,7 +33,9 @@ class Console {
       : typeof process.stdout.columns === "number"
         ? process.stdout.columns - 10
         : 100;
-    this.handler = handler ? handler : outputString => logUpdate(outputString);
+    this.handler = handler
+      ? handler
+      : outputString => writeToConsole(outputString);
     this.spacing = spacing || " ";
   }
 

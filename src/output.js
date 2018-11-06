@@ -81,9 +81,8 @@ class RowOutput {
       return acc + child.getLineLength();
     }, 0);
     return (
-      (this.section.maxHeight && rowsLineLength > this.section.maxHeight
-        ? this.section.maxHeight
-        : rowsLineLength) + this.section.border.verticalHeight()
+      (this.section.height ? this.section.height : rowsLineLength) +
+      this.section.border.verticalHeight()
     );
   }
 
@@ -239,9 +238,8 @@ class ColumnOutput {
       return columnLength > max ? columnLength : max;
     }, 0);
     return (
-      (this.section.maxHeight && maxColumnHeight > this.section.maxHeight
-        ? this.section.maxHeight
-        : maxColumnHeight) + this.section.border.verticalHeight()
+      (this.section.height ? this.section.height : maxColumnHeight) +
+      this.section.border.verticalHeight()
     );
   }
 

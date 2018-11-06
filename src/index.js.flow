@@ -21,5 +21,5 @@ declare export function Section(props: {
     cornerBottomLeft?: string,
     cornerBottomRight?: string
   },
-  maxHeight?: number
+  height?: number
 }): React.Node;

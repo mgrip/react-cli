@@ -71,7 +71,7 @@ function SectionComponent(props: {
     cornerBottomLeft?: string,
     cornerBottomRight?: string
   },
-  maxHeight?: number
+  height?: number
 }) {
   return <div {...props} />;
 }

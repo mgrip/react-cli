@@ -125,9 +125,9 @@ test("sections should be able to render a border", done => {
   );
 });
 
-test("sections should be able to declare a max height to limit line length", done => {
+test("sections should be able to declare a fixed height", done => {
   ReactCLI(
-    <Section maxHeight={3}>
+    <Section height={3}>
       Line 1<br />
       Line 2<br />
       Line 3<br />
@@ -142,11 +142,10 @@ test("sections should be able to declare a max height to limit line length", don
   );
 
   ReactCLI(
-    <Section maxHeight={5}>
+    <Section height={5}>
       Line 1<br />
       Line 2<br />
       Line 3<br />
-      Line 4<br />
     </Section>,
     undefined,
     50,
@@ -157,7 +156,7 @@ test("sections should be able to declare a max height to limit line length", don
   );
 
   ReactCLI(
-    <Section maxHeight={3} horizontal>
+    <Section height={3} horizontal>
       Test
       <Section>
         Line 1<br />

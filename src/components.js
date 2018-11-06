@@ -59,14 +59,14 @@ export class Section {
   align: "left" | "center" | "right";
   children: Array<Section | Text | Break> = [];
   border: Border;
-  maxHeight: ?number;
+  height: ?number;
   static type: "div" = "div";
 
   constructor({
     useHorizontalOrientation = false,
     align = "left",
     border = {},
-    maxHeight
+    height
   }: {
     useHorizontalOrientation: boolean,
     align: "left" | "center" | "right",
@@ -78,12 +78,12 @@ export class Section {
       cornerBottomLeft?: string,
       cornerBottomRight?: string
     },
-    maxHeight?: number
+    height?: number
   }) {
     this.orientation = useHorizontalOrientation ? "horizontal" : "vertical";
     this.align = align;
     this.border = new Border(border);
-    this.maxHeight = maxHeight;
+    this.height = height;
   }
 }
 

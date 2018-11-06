@@ -18,7 +18,7 @@ const ReconcilerConfig = {
           useHorizontalOrientation: props.horizontal,
           align: props.align,
           border: props.border,
-          maxHeight: props.maxHeight
+          height: props.height
         });
       default:
         // throw error?

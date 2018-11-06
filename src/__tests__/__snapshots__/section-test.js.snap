@@ -15,22 +15,23 @@ exports[`sections should be able to align text right 1`] = `
 "
 `;
 
-exports[`sections should be able to declare a max height to limit line length 1`] = `
+exports[`sections should be able to declare a fixed height 1`] = `
 "Line 1                                            
 Line 2                                            
 Line 3                                            
 "
 `;
 
-exports[`sections should be able to declare a max height to limit line length 2`] = `
+exports[`sections should be able to declare a fixed height 2`] = `
 "Line 1                                            
 Line 2                                            
 Line 3                                            
-Line 4                                            
+
+
 "
 `;
 
-exports[`sections should be able to declare a max height to limit line length 3`] = `
+exports[`sections should be able to declare a fixed height 3`] = `
 "Test                     Line 1                   
                          Line 2                   
                          Line 3                   

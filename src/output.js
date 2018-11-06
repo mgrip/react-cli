@@ -80,7 +80,10 @@ class RowOutput {
     const rowsLineLength = this.rows.reduce((acc, child) => {
       return acc + child.getLineLength();
     }, 0);
-    return rowsLineLength + this.section.border.verticalHeight();
+    return (
+      (this.section.maxHeight ? this.section.maxHeight : rowsLineLength) +
+      this.section.border.verticalHeight()
+    );
   }
 
   padText({ text, spacing }: { text: string, spacing: string }): string {
@@ -234,7 +237,10 @@ class ColumnOutput {
       const columnLength = column.getLineLength();
       return columnLength > max ? columnLength : max;
     }, 0);
-    return maxColumnHeight + this.section.border.verticalHeight();
+    return (
+      (this.section.maxHeight ? this.section.maxHeight : maxColumnHeight) +
+      this.section.border.verticalHeight()
+    );
   }
 
   padText({

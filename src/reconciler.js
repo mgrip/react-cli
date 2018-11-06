@@ -17,7 +17,8 @@ const ReconcilerConfig = {
         return new Section({
           useHorizontalOrientation: props.horizontal,
           align: props.align,
-          border: props.border
+          border: props.border,
+          maxHeight: props.maxHeight
         });
       default:
         // throw error?

@@ -5,7 +5,7 @@ ReactCLI is a react renderer for the command line. All of the benefits of React,
 ![react-cli-demo](/.github/demo.svg)
 
 ```javascript
-const ReactCLI = require("./index");
+const ReactCLI, { Section } = require("./index");
 const React = require("react");
 const chalk = require("chalk");
 
@@ -16,20 +16,20 @@ class MyReactCLIApp extends React.Component {
 
   render() {
     return (
-      <div border={{ horizontal: "*", vertical: "*" }} align="center">
+      <Section border={{ horizontal: "*", vertical: "*" }} align="center">
         My {chalk.blue("New")} {chalk.magenta("ReactCLI App")} 🚀
-        <div horizontal>
-          <div align="center">
+        <Section horizontal>
+          <Section align="center">
             {this.state.step >= 1 ? chalk.green("✔︎") : "◯"} Step 1<br />
             {this.state.step >= 2 ? chalk.green("✔︎") : "◯"} Step 2<br />
             {this.state.step >= 3 ? chalk.green("✔︎") : "◯"} Step 3
-          </div>
-          <div border={{ horizontal: "-", vertical: "|" }} align="center">
+          </Section>
+          <Section border={{ horizontal: "-", vertical: "|" }} align="center">
             Number of steps done:{" "}
             {chalk.bold.magenta(this.state.step.toString())}
-          </div>
-        </div>
-      </div>
+          </Section>
+        </Section>
+      </Section>
     );
   }
 }
@@ -74,24 +74,24 @@ ReactCLI is analogous to ReactDOM or ReactNative. It just renders any updates di
 
 ReactCLI provides two components for building command line interfaces.
 
-- div
-  A new section is denoted by `div`. A section can either be vertical, or horizontal. The children of a section can be a mix of text, or more sections. A section can also align text left, right, or center.
+- Section
+  A new section is denoted by `Section`. A section can either be vertical, or horizontal. The children of a section can be a mix of text, or more sections. A section can also align text left, right, or center.
 
   ```javascript
-  <div horizontal>
-    <div>Column 1</div>
-    <div>Column 2</div>
-  </div>
+  <Section horizontal>
+    <Section>Column 1</Section>
+    <Section>Column 2</Section>
+  </Section>
   ```
 
 - break
   Break components allow you to define columns and/or rows within a section (as opposed to using nested sections).
 
   ```javascript
-  <div>
+  <Section>
     Row 1<br />
     Row 2
-  </div>
+  </Section>
   ```
 
 #

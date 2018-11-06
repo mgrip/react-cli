@@ -15,6 +15,20 @@ exports[`sections should be able to align text right 1`] = `
 "
 `;
 
+exports[`sections should be able to declare a max height to limit line length 1`] = `
+"Line 1                                            
+Line 2                                            
+Line 3                                            
+"
+`;
+
+exports[`sections should be able to declare a max height to limit line length 2`] = `
+"Test                     Line 1                   
+                         Line 2                   
+                         Line 3                   
+"
+`;
+
 exports[`sections should be able to render a border 1`] = `
 "--------------------------------------------------
 |++++++++++++Test section with border++++++++++++|

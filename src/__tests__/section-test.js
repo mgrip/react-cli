@@ -1,13 +1,13 @@
 // @flow strict
 
 import * as React from "react";
-import ReactCLI from "../index";
+import ReactCLI, { Section } from "../index";
 
 test("sections should be able to render horizontally", done => {
   ReactCLI(
-    <div horizontal>
+    <Section horizontal>
       Column 1 <br /> Column 2
-    </div>,
+    </Section>,
     undefined,
     50,
     outputString => {
@@ -20,9 +20,9 @@ test("sections should be able to render horizontally", done => {
 
 test("sections should be able to render vertically", done => {
   ReactCLI(
-    <div>
+    <Section>
       Row 1 <br /> Row 2
-    </div>,
+    </Section>,
     undefined,
     50,
     outputString => {
@@ -35,7 +35,7 @@ test("sections should be able to render vertically", done => {
 
 test("sections should be able to align text left", done => {
   ReactCLI(
-    <div align="left">Left text</div>,
+    <Section align="left">Left text</Section>,
     undefined,
     50,
     outputString => {
@@ -48,7 +48,7 @@ test("sections should be able to align text left", done => {
 
 test("sections should be able to align text right", done => {
   ReactCLI(
-    <div align="right">Right text</div>,
+    <Section align="right">Right text</Section>,
     undefined,
     50,
     outputString => {
@@ -61,7 +61,7 @@ test("sections should be able to align text right", done => {
 
 test("sections should be able to align text center", done => {
   ReactCLI(
-    <div align="center">Center text</div>,
+    <Section align="center">Center text</Section>,
     undefined,
     50,
     outputString => {
@@ -74,8 +74,8 @@ test("sections should be able to align text center", done => {
 
 test("sections should be able to render a border", done => {
   ReactCLI(
-    <div>
-      <div
+    <Section>
+      <Section
         align="center"
         border={{
           horizontal: "-",
@@ -87,8 +87,8 @@ test("sections should be able to render a border", done => {
         }}
       >
         Test section with border
-      </div>
-    </div>,
+      </Section>
+    </Section>,
     undefined,
     50,
     outputString => {
@@ -99,9 +99,9 @@ test("sections should be able to render a border", done => {
   );
 
   ReactCLI(
-    <div horizontal border={{ horizontal: "*", vertical: "*" }}>
+    <Section horizontal border={{ horizontal: "*", vertical: "*" }}>
       Some Text
-      <div
+      <Section
         align="center"
         border={{
           horizontal: "-",
@@ -113,8 +113,8 @@ test("sections should be able to render a border", done => {
         }}
       >
         Test section with border
-      </div>
-    </div>,
+      </Section>
+    </Section>,
     undefined,
     50,
     outputString => {
@@ -122,5 +122,40 @@ test("sections should be able to render a border", done => {
       done();
     },
     "+"
+  );
+});
+
+test("sections should be able to declare a max height to limit line length", done => {
+  ReactCLI(
+    <Section maxHeight={3}>
+      Line 1<br />
+      Line 2<br />
+      Line 3<br />
+      Line 4<br />
+    </Section>,
+    undefined,
+    50,
+    outputString => {
+      expect(outputString).toMatchSnapshot();
+      done();
+    }
+  );
+
+  ReactCLI(
+    <Section maxHeight={3} horizontal>
+      Test
+      <Section>
+        Line 1<br />
+        Line 2<br />
+        Line 3<br />
+        Line 4<br />
+      </Section>
+    </Section>,
+    undefined,
+    50,
+    outputString => {
+      expect(outputString).toMatchSnapshot();
+      done();
+    }
   );
 });

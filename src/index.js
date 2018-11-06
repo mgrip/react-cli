@@ -52,6 +52,23 @@ class Console {
   }
 }
 
+function SectionComponent(props: {
+  horizontal?: boolean,
+  align?: "left" | "center" | "right",
+  border?: {
+    vertical?: string,
+    horizontal?: string,
+    cornerTopLeft?: string,
+    cornerTopRight?: string,
+    cornerBottomLeft?: string,
+    cornerBottomRight?: string
+  },
+  maxHeight?: number
+}) {
+  return <div {...props} />;
+}
+export { SectionComponent as Section };
+
 export default function render(
   element: React.Node,
   callback?: () => void,

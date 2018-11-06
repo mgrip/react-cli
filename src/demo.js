@@ -1,6 +1,6 @@
 // @flow strict-local
 
-import ReactCLI from "./index";
+import ReactCLI, { Section } from "./index";
 import React from "react";
 import chalk from "chalk";
 
@@ -11,20 +11,20 @@ class MyReactCLIApp extends React.Component<{}, { step: number }> {
 
   render() {
     return (
-      <div border={{ horizontal: "*", vertical: "*" }} align="center">
+      <Section border={{ horizontal: "*", vertical: "*" }} align="cener">
         My {chalk.blue("New")} {chalk.magenta("ReactCLI App")} 🚀
-        <div horizontal>
-          <div align="center">
+        <Section horizontal>
+          <Section align="center">
             {this.state.step >= 1 ? chalk.green("✔︎") : "◯"} Step 1<br />
             {this.state.step >= 2 ? chalk.green("✔︎") : "◯"} Step 2<br />
             {this.state.step >= 3 ? chalk.green("✔︎") : "◯"} Step 3
-          </div>
-          <div border={{ horizontal: "-", vertical: "|" }} align="center">
+          </Section>
+          <Section border={{ horizontal: "-", vertical: "|" }} align="center">
             Number of steps done:{" "}
             {chalk.bold.magenta(this.state.step.toString())}
-          </div>
-        </div>
-      </div>
+          </Section>
+        </Section>
+      </Section>
     );
   }
 }

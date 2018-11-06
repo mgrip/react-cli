@@ -9,3 +9,17 @@ declare export default (
   handler?: (output: string) => void,
   spacing?: string
 ) => void;
+
+declare export function Section(props: {
+  horizontal?: boolean,
+  align?: "left" | "center" | "right",
+  border?: {
+    vertical?: string,
+    horizontal?: string,
+    cornerTopLeft?: string,
+    cornerTopRight?: string,
+    cornerBottomLeft?: string,
+    cornerBottomRight?: string
+  },
+  maxHeight?: number
+}): React.Node;

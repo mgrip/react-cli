@@ -5,7 +5,7 @@ ReactCLI is a react renderer for the command line. All of the benefits of React,
 ![react-cli-demo](/.github/demo.svg)
 
 ```javascript
-const ReactCLI, { Section } = require("./index");
+const ReactCLI, { Section } = require("react-cli-renderer");
 const React = require("react");
 const chalk = require("chalk");
 

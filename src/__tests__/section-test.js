@@ -142,6 +142,21 @@ test("sections should be able to declare a max height to limit line length", don
   );
 
   ReactCLI(
+    <Section maxHeight={5}>
+      Line 1<br />
+      Line 2<br />
+      Line 3<br />
+      Line 4<br />
+    </Section>,
+    undefined,
+    50,
+    outputString => {
+      expect(outputString).toMatchSnapshot();
+      done();
+    }
+  );
+
+  ReactCLI(
     <Section maxHeight={3} horizontal>
       Test
       <Section>

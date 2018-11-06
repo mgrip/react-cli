@@ -23,6 +23,14 @@ Line 3
 `;
 
 exports[`sections should be able to declare a max height to limit line length 2`] = `
+"Line 1                                            
+Line 2                                            
+Line 3                                            
+Line 4                                            
+"
+`;
+
+exports[`sections should be able to declare a max height to limit line length 3`] = `
 "Test                     Line 1                   
                          Line 2                   
                          Line 3                   

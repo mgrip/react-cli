@@ -3,7 +3,7 @@
 import { Section, Text, Break } from "./components";
 import stripAnsi from "strip-ansi";
 import wrapAnsiNewLine from "wrap-ansi";
-import isFullwidthCodePoint from "is-fullwidth-code-point";
+import emojiRegex from "emoji-regex";
 // this module is helpful for dealing with ansi characters, but it returns a
 // string with embedded new lines. We need it as an array, so we'll split it here
 const wrapAnsi = (input: string, columns: number): Array<string> =>
@@ -50,14 +50,15 @@ export default function getOutputFromSection({
 
 function textColumnCount(text: string): number {
   const characters: string = stripAnsi(text);
-  return (
-    characters.length +
-    characters
-      .split("")
-      .filter((character, index) =>
-        isFullwidthCodePoint(characters.codePointAt(index))
-      ).length
-  );
+  let fullWidthCharacterCount = 0;
+
+  // emojis technically consist of 2 characters of unicode, but only take up
+  // 1 column of output, so we need to account for that
+  const regex = emojiRegex();
+  while (regex.exec(text)) {
+    fullWidthCharacterCount++;
+  }
+  return characters.length - fullWidthCharacterCount;
 }
 
 class RowOutput {

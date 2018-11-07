@@ -9,6 +9,12 @@ class MyReactCLIApp extends React.Component<{}, { step: number }> {
     step: 0
   };
 
+  componentDidMount() {
+    setTimeout(() => this.setState({ step: 1 }), 1000);
+    setTimeout(() => this.setState({ step: 2 }), 2000);
+    setTimeout(() => this.setState({ step: 3 }), 3000);
+  }
+
   render() {
     return (
       <Section border={{ horizontal: "*", vertical: "*" }} align="cener">
@@ -29,17 +35,4 @@ class MyReactCLIApp extends React.Component<{}, { step: number }> {
   }
 }
 
-const appReference = React.createRef();
-ReactCLI(<MyReactCLIApp ref={appReference} />, undefined, 60);
-setTimeout(
-  () => appReference.current && appReference.current.setState({ step: 1 }),
-  1000
-);
-setTimeout(
-  () => appReference.current && appReference.current.setState({ step: 2 }),
-  2000
-);
-setTimeout(
-  () => appReference.current && appReference.current.setState({ step: 3 }),
-  3000
-);
+ReactCLI(<MyReactCLIApp />, undefined, 60);

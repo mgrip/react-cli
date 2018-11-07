@@ -5,14 +5,20 @@ ReactCLI is a react renderer for the command line. All of the benefits of React,
 ![react-cli-demo](/.github/demo.svg)
 
 ```javascript
-const ReactCLI, { Section } = require("react-cli-renderer");
-const React = require("react");
-const chalk = require("chalk");
+import ReactCLI, { Section } from "react-cli-renderer";
+import React from "react";
+import chalk from "chalk";
 
 class MyReactCLIApp extends React.Component {
   state = {
     step: 0
   };
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ step: 1 }), 1000);
+    setTimeout(() => this.setState({ step: 2 }), 2000);
+    setTimeout(() => this.setState({ step: 3 }), 3000);
+  }
 
   render() {
     return (
@@ -34,21 +40,10 @@ class MyReactCLIApp extends React.Component {
   }
 }
 
-const appReference = React.createRef();
-ReactCLI(<MyReactCLIApp ref={appReference} />, undefined, 60);
-setTimeout(
-  () => appReference.current && appReference.current.setState({ step: 1 }),
-  1000
-);
-setTimeout(
-  () => appReference.current && appReference.current.setState({ step: 2 }),
-  2000
-);
-setTimeout(
-  () => appReference.current && appReference.current.setState({ step: 3 }),
-  3000
-);
+ReactCLI(<MyReactCLIApp />);
 ```
+
+_note: this example uses the "@babel/preset-env", "@babel/preset-react" babel presets, and "@babel/plugin-proposal-class-properties" plugin_
 
 ## Getting started
 
@@ -63,6 +58,8 @@ yarn add react react-cli-renderer
 ```bash
 npm install --save react react-cli-renderer
 ```
+
+_note: You can use react-cli-renderer without babel, but you'll most likely want to write components [using JSX.](https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project)_
 
 ## About
 

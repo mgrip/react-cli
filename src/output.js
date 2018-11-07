@@ -49,9 +49,9 @@ export default function getOutputFromSection({
 }
 
 function textColumnCount(text: string): number {
-  const characters: string = stripAnsi(text);
-
-  return wcwidth(characters);
+  // leaving the wrapper for now since its been changed so much recently
+  // emojis are hard 😓
+  return wcwidth(stripAnsi(text));
 }
 
 class RowOutput {

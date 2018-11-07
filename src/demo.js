@@ -19,6 +19,8 @@ class MyReactCLIApp extends React.Component<{}, { step: number }> {
     return (
       <Section border={{ horizontal: "*", vertical: "*" }} align="cener">
         My {chalk.blue("New")} {chalk.magenta("ReactCLI App")} 🚀
+        <br />
+        🛠 Emojis are difficult with monospaced text... 🕸
         <Section horizontal>
           <Section align="center">
             {this.state.step >= 1 ? chalk.green("✓") : "◯"} Step 1<br />

@@ -3,9 +3,6 @@
 # dependencies
 /node_modules
 
-# flow typed
-/flow-typed
-
 # misc
 .DS_Store
 .env

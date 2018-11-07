@@ -3,7 +3,7 @@
 import { Section, Text, Break } from "./components";
 import stripAnsi from "strip-ansi";
 import wrapAnsiNewLine from "wrap-ansi";
-import emojiRegex from "emoji-regex";
+import emojiRegex from "emoji-regex/es2015/text.js";
 // this module is helpful for dealing with ansi characters, but it returns a
 // string with embedded new lines. We need it as an array, so we'll split it here
 const wrapAnsi = (input: string, columns: number): Array<string> =>
@@ -55,8 +55,11 @@ function textColumnCount(text: string): number {
   // emojis technically consist of 2 characters of unicode, but only take up
   // 1 column of output, so we need to account for that
   const regex = emojiRegex();
-  while (regex.exec(text)) {
-    fullWidthCharacterCount++;
+  let match;
+  while ((match = regex.exec(text))) {
+    // not all matches take up 2 columns (numbers are technically emoji) - so
+    // check the actual length of the match
+    fullWidthCharacterCount += match[0].length - 1;
   }
   return characters.length - fullWidthCharacterCount;
 }

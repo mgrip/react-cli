@@ -27,7 +27,7 @@ exports[`Columns, rows, section styles should all work together 1`] = `
 #*+++++++◯ Step 2+++++++*|app+++++++++++++++++++|#
 #*+++++++◯ Step 3+++++++*------------------------#
 #************************++++++++++++++++++++++++#
-#+++++++Some stuff for this app is done! 🤘+++++++#
+#++++++Some stuff for this app is done! 🤘+++++++#
 #Heres some more informative stuff about your app#
 #++++++++++++++++++++browser+++++++++++++++++++++#
 #+++++++++++++++++++++↙↗ ↖↘++++++++++++++++++++++#

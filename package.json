@@ -42,7 +42,6 @@
   "dependencies": {
     "ansi-escapes": "^3.1.0",
     "emoji-regex": "^7.0.1",
-    "punycode": "^2.1.1",
     "react-reconciler": "^0.16.0",
     "strip-ansi": "^5.0.0",
     "wrap-ansi": "^4.0.0"

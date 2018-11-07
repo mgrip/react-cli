@@ -3,7 +3,6 @@
 import { Section, Text, Break } from "./components";
 import stripAnsi from "strip-ansi";
 import wrapAnsiNewLine from "wrap-ansi";
-import punycode from "punycode";
 // this module is helpful for dealing with ansi characters, but it returns a
 // string with embedded new lines. We need it as an array, so we'll split it here
 const wrapAnsi = (input: string, columns: number): Array<string> =>
@@ -50,12 +49,7 @@ export default function getOutputFromSection({
 
 function textColumnCount(text: string): number {
   const characters: string = stripAnsi(text);
-
-  // Unicode Normalization, NFC form, to account for lookalikes:
-  const normalized = characters.normalize("NFC");
-  const decodedCharacters = punycode.ucs2.decode(normalized);
-  // Account for astral symbols / surrogates, just like we did before:
-  return decodedCharacters.length;
+  return characters.length;
 }
 
 class RowOutput {

@@ -34,6 +34,7 @@
   },
   "scripts": {
     "build": "babel src/ -d lib/ --ignore '*/__tests__/*' && cp src/index.js.flow lib/",
+    "debug": "node --inspect node_modules/.bin/jest --runInBand",
     "demo": "svg-term --command 'node lib/demo.js' --out .github/demo.svg --window --from 50 --to 5000  --term hyper --profile hyper-chesterish",
     "prepublish": "yarn run build",
     "test": "yarn run jest"
@@ -41,6 +42,7 @@
   "dependencies": {
     "ansi-escapes": "^3.1.0",
     "emoji-regex": "^7.0.1",
+    "punycode": "^2.1.1",
     "react-reconciler": "^0.16.0",
     "strip-ansi": "^5.0.0",
     "wrap-ansi": "^4.0.0"

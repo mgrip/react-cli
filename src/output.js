@@ -3,7 +3,7 @@
 import { Section, Text, Break } from "./components";
 import stripAnsi from "strip-ansi";
 import wrapAnsiNewLine from "wrap-ansi";
-import emojiRegex from "emoji-regex/es2015/text.js";
+import punycode from "punycode";
 // this module is helpful for dealing with ansi characters, but it returns a
 // string with embedded new lines. We need it as an array, so we'll split it here
 const wrapAnsi = (input: string, columns: number): Array<string> =>
@@ -50,18 +50,12 @@ export default function getOutputFromSection({
 
 function textColumnCount(text: string): number {
   const characters: string = stripAnsi(text);
-  let fullWidthCharacterCount = 0;
 
-  // emojis technically consist of 2 characters of unicode, but only take up
-  // 1 column of output, so we need to account for that
-  const regex = emojiRegex();
-  let match;
-  while ((match = regex.exec(text))) {
-    // not all matches take up 2 columns (numbers are technically emoji) - so
-    // check the actual length of the match
-    fullWidthCharacterCount += match[0].length - 1;
-  }
-  return characters.length - fullWidthCharacterCount;
+  // Unicode Normalization, NFC form, to account for lookalikes:
+  const normalized = characters.normalize("NFC");
+  const decodedCharacters = punycode.ucs2.decode(normalized);
+  // Account for astral symbols / surrogates, just like we did before:
+  return decodedCharacters.length;
 }
 
 class RowOutput {

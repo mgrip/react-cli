@@ -39,17 +39,10 @@ test("columns containing emojis should render the correct width", done => {
     "+"
   );
 
+  //@TODO: still need to figure out this isue with the checkmark character
   ReactCLI(
-    <Section border={{ horizontal: "*", vertical: "*" }} align="cener">
-      My New ReactCLI App 🚀
-      <Section horizontal>
-        <Section align="center">
-          ✔︎ Step 1<br />◯ Step 2<br />◯ Step 3
-        </Section>
-        <Section border={{ horizontal: "-", vertical: "|" }} align="center">
-          Number of steps done: 1
-        </Section>
-      </Section>
+    <Section border={{ horizontal: "*", vertical: "*" }} align="center">
+      ✔︎ Step 1<br />◯ Step 2<br />◯ Step 3
     </Section>,
     undefined,
     50,

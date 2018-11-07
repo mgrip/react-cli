@@ -3,6 +3,7 @@
 import { Section, Text, Break } from "./components";
 import stripAnsi from "strip-ansi";
 import wrapAnsiNewLine from "wrap-ansi";
+import isFullwidthCodePoint from "is-fullwidth-code-point";
 // this module is helpful for dealing with ansi characters, but it returns a
 // string with embedded new lines. We need it as an array, so we'll split it here
 const wrapAnsi = (input: string, columns: number): Array<string> =>
@@ -47,6 +48,18 @@ export default function getOutputFromSection({
   }
 }
 
+function textColumnCount(text: string): number {
+  const characters: string = stripAnsi(text);
+  return (
+    characters.length +
+    characters
+      .split("")
+      .filter((character, index) =>
+        isFullwidthCodePoint(characters.codePointAt(index))
+      ).length
+  );
+}
+
 class RowOutput {
   width: number;
   rows: Array<OutputType>;
@@ -74,6 +87,8 @@ class RowOutput {
       }
       return acc;
     }, []);
+    // @TODO i think we need to actually manipulate the section contents here.
+    // might need to pass a temp fixed height down the tree as well
   }
 
   getLineLength(): number {
@@ -94,19 +109,19 @@ class RowOutput {
     switch (this.section.align) {
       case "left":
         innerText =
-          text + "".padStart(innerWidth - stripAnsi(text).length, spacing);
+          text + "".padStart(innerWidth - textColumnCount(text), spacing);
         break;
       case "right":
         innerText =
-          "".padStart(innerWidth - stripAnsi(text).length, spacing) + text;
+          "".padStart(innerWidth - textColumnCount(text), spacing) + text;
         break;
       default:
         innerText =
-          "".padStart((innerWidth - stripAnsi(text).length) / 2, spacing) +
+          "".padStart((innerWidth - textColumnCount(text)) / 2, spacing) +
           text +
           "".padStart(
-            (innerWidth - stripAnsi(text).length) / 2 +
-              ((innerWidth - stripAnsi(text).length) % 2),
+            (innerWidth - textColumnCount(text)) / 2 +
+              ((innerWidth - textColumnCount(text)) % 2),
             spacing
           );
         break;
@@ -262,19 +277,19 @@ class ColumnOutput {
     switch (this.section.align) {
       case "left":
         innerText =
-          text + "".padStart(columnWidth - stripAnsi(text).length, spacing);
+          text + "".padStart(columnWidth - textColumnCount(text), spacing);
         break;
       case "right":
         innerText =
-          "".padStart(columnWidth - stripAnsi(text).length, spacing) + text;
+          "".padStart(columnWidth - textColumnCount(text), spacing) + text;
         break;
       default:
         innerText =
-          "".padStart((columnWidth - stripAnsi(text).length) / 2, spacing) +
+          "".padStart((columnWidth - textColumnCount(text)) / 2, spacing) +
           text +
           "".padStart(
-            (columnWidth - stripAnsi(text).length) / 2 +
-              ((columnWidth - stripAnsi(text).length) % 2),
+            (columnWidth - textColumnCount(text)) / 2 +
+              ((columnWidth - textColumnCount(text)) % 2),
             spacing
           );
         break;

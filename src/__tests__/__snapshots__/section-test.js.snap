@@ -23,11 +23,13 @@ Line 3
 `;
 
 exports[`sections should be able to declare a fixed height 2`] = `
-"Line 1                                            
-Line 2                                            
-Line 3                                            
+"**************************************************
+*Line 1                                          *
+*Line 2                                          *
+*Line 3                                          *
 
 
+**************************************************
 "
 `;
 

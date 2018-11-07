@@ -142,7 +142,7 @@ test("sections should be able to declare a fixed height", done => {
   );
 
   ReactCLI(
-    <Section height={5}>
+    <Section height={5} border={{ vertical: "*", horizontal: "*" }}>
       Line 1<br />
       Line 2<br />
       Line 3<br />

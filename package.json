@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "babel src/ -d lib/ --ignore '*/__tests__/*' && cp src/index.js.flow lib/",
-    "demo": "svg-term --command 'node lib/demo.js' --out .github/demo.svg --window --from 50 --to 5000 --width 60 --height 8 --term hyper --profile hyper-chesterish",
+    "demo": "termtosvg .github/demo.svg --template=window_frame",
     "prepublish": "yarn run build",
     "test": "yarn run jest"
   },

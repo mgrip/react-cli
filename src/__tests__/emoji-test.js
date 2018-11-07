@@ -38,4 +38,25 @@ test("columns containing emojis should render the correct width", done => {
     },
     "+"
   );
+
+  ReactCLI(
+    <Section border={{ horizontal: "*", vertical: "*" }} align="cener">
+      My New ReactCLI App 🚀
+      <Section horizontal>
+        <Section align="center">
+          ✔︎ Step 1<br />◯ Step 2<br />◯ Step 3
+        </Section>
+        <Section border={{ horizontal: "-", vertical: "|" }} align="center">
+          Number of steps done: 1
+        </Section>
+      </Section>
+    </Section>,
+    undefined,
+    50,
+    outputString => {
+      expect(outputString).toMatchSnapshot();
+      done();
+    },
+    "+"
+  );
 });

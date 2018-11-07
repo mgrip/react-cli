@@ -3,6 +3,7 @@
 import { Section, Text, Break } from "./components";
 import stripAnsi from "strip-ansi";
 import wrapAnsiNewLine from "wrap-ansi";
+import emojiRegex from "emoji-regex/es2015/text.js";
 // this module is helpful for dealing with ansi characters, but it returns a
 // string with embedded new lines. We need it as an array, so we'll split it here
 const wrapAnsi = (input: string, columns: number): Array<string> =>
@@ -49,7 +50,15 @@ export default function getOutputFromSection({
 
 function textColumnCount(text: string): number {
   const characters: string = stripAnsi(text);
-  return characters.length;
+
+  let extraColumns = 0;
+  const regex = emojiRegex();
+  let match;
+  while ((match = regex.exec(text))) {
+    const emoji = match[0];
+    extraColumns += emoji.length - 1;
+  }
+  return characters.length - extraColumns;
 }
 
 class RowOutput {

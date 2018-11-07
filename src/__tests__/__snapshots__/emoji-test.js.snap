@@ -3,7 +3,7 @@
 exports[`columns containing emojis should render the correct width 1`] = `
 "**************************************************
 *Row 1+++++++++++++++++++++++++++++++++++++++++++*
-*Row 2 🎉🍾🎉++++++++++++++++++++++++++++++++++++*
+*Row 2 🎉🍾🎉+++++++++++++++++++++++++++++++++++++++*
 **************************************************
 "
 `;
@@ -11,11 +11,11 @@ exports[`columns containing emojis should render the correct width 1`] = `
 exports[`columns containing emojis should render the correct width 2`] = `
 "**************************************************
 *Emoji test line one, its a lont line that takes+*
-*space 🤘++++++++++++++++++++++++++++++++++++++++*
-*🛠 Multiple emojis in the same line! 🍾 🛫++++++*
-*🛠 Some more emojis with elipsis... 🕸++++++++++*
-*An emoji in the middle 🛠 thats so \\"--crazy\\"++++*
-*one more for good measure... 🕸+++++++++++++++++*
+*space 🤘+++++++++++++++++++++++++++++++++++++++++*
+*🛠 Multiple emojis in the same line! 🍾 🛫+++++++++*
+*🛠 Some more emojis with elipsis... 🕸++++++++++++*
+*An emoji in the middle 🛠 thats so \\"--crazy\\"+++++*
+*one more for good measure... 🕸++++++++++++++++++*
 **************************************************
 "
 `;

@@ -93,6 +93,12 @@ ReactCLI provides two components for building command line interfaces.
 
 #
 
+## Built with ReactCLI
+
+_if you're using ReactCLI and want to add your project to this list, feel free to submit a PR!_
+
+- [startd](https://github.com/mgrip/startd)
+
 Contributions welcome!
 
 ### 👨‍🎤👩‍🔬👨‍🎨

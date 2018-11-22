@@ -5,6 +5,7 @@ import * as React from "react";
 import ansiEscapes from "ansi-escapes";
 import { Section } from "./components";
 import getOutputFromSection from "./output";
+import interceptStdout from "intercept-stdout";
 
 let previousLineCount = 0;
 function writeToConsole(output: string) {
@@ -33,9 +34,19 @@ class Console {
       : typeof process.stdout.columns === "number"
         ? process.stdout.columns - 10
         : 100;
-    this.handler = handler
-      ? handler
-      : outputString => writeToConsole(outputString);
+    if (handler) {
+      this.handler = handler;
+    } else {
+      this.handler = outputString => writeToConsole(outputString);
+      // if any other console output comes in, first print that, then re-print
+      // our node tree underneath
+      // @TODO: figure out if there's a bettre way to do this, or if we could
+      // pass it to the component being rendered so client's can handle output
+      interceptStdout(stdoutText => {
+        writeToConsole(stdoutText);
+        this.update();
+      });
+    }
     this.spacing = spacing || " ";
   }
 

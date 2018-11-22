@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "ansi-escapes": "^3.1.0",
+    "intercept-stdout": "^0.1.2",
     "react-reconciler": "^0.16.0",
     "strip-ansi": "^5.0.0",
     "wcwidth": "^1.0.1",

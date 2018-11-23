@@ -48,7 +48,9 @@ class Console {
         // @TODO: figure out if there's a bettre way to do this, or if we could
         // pass it to the component being rendered so client's can handle output
         stopIntercept = interceptStdout(stdoutText => {
-          stdOutListener.dispatch(stdoutText);
+          stdOutListeners.forEach(listener => {
+            listener(stdoutText.split("\n"));
+          });
         });
       };
     }
@@ -93,16 +95,10 @@ function SectionComponent(props: {
 }
 export { SectionComponent as Section };
 
-class StdOutListener {
-  listeners = [];
-  onStdout(callback: (stdOutText: string) => void) {
-    this.listeners.push(callback);
-  }
-  dispatch(stdOutText: string) {
-    this.listeners.forEach(listener => listener(stdOutText));
-  }
+const stdOutListeners = [];
+export function watchStdout(callback: (Array<string>) => void) {
+  stdOutListeners.push(callback);
 }
-export const stdOutListener = new StdOutListener();
 export default function render(
   element: React.Node,
   callback?: () => void,

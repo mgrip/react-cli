@@ -23,3 +23,5 @@ declare export function Section(props: {
   },
   height?: number
 }): React.Node;
+
+declare export function watchStdout(callback: (Array<string>) => void): void;

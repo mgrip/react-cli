@@ -37,15 +37,20 @@ class Console {
     if (handler) {
       this.handler = handler;
     } else {
-      this.handler = outputString => writeToConsole(outputString);
-      // if any other console output comes in, first print that, then re-print
-      // our node tree underneath
-      // @TODO: figure out if there's a bettre way to do this, or if we could
-      // pass it to the component being rendered so client's can handle output
-      interceptStdout(stdoutText => {
-        writeToConsole(stdoutText);
-        this.update();
-      });
+      let stopIntercept;
+      this.handler = outputString => {
+        if (stopIntercept) {
+          stopIntercept();
+        }
+        writeToConsole(outputString);
+        // if any other console output comes in, first print that, then re-print
+        // our node tree underneath
+        // @TODO: figure out if there's a bettre way to do this, or if we could
+        // pass it to the component being rendered so client's can handle output
+        stopIntercept = interceptStdout(stdoutText => {
+          stdOutListener.dispatch(stdoutText);
+        });
+      };
     }
     this.spacing = spacing || " ";
   }
@@ -88,6 +93,16 @@ function SectionComponent(props: {
 }
 export { SectionComponent as Section };
 
+class StdOutListener {
+  listeners = [];
+  onStdout(callback: (stdOutText: string) => void) {
+    this.listeners.push(callback);
+  }
+  dispatch(stdOutText: string) {
+    this.listeners.forEach(listener => listener(stdOutText));
+  }
+}
+export const stdOutListener = new StdOutListener();
 export default function render(
   element: React.Node,
   callback?: () => void,

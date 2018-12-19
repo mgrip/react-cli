@@ -32,8 +32,8 @@ class Console {
     this.consoleWidth = width
       ? width
       : typeof process.stdout.columns === "number"
-        ? process.stdout.columns - 10
-        : 100;
+      ? process.stdout.columns - 10
+      : 100;
     if (handler) {
       this.handler = handler;
     } else {

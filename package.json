@@ -22,13 +22,12 @@
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-flowtype": "^3.1.4",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.26.2",
+    "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "flow-bin": "^0.85.0",
+    "flow-bin": "^0.89.0",
     "jest": "^23.6.0",
     "jest-runner-eslint": "^0.7.1",
-    "jest-runner-flowtype": "^0.0.7",
     "prettier": "^1.14.3",
     "react": "^16.6.0"
   },
@@ -36,13 +35,13 @@
     "build": "babel src/ -d lib/ --ignore '*/__tests__/*' && cp src/index.js.flow lib/",
     "debug": "node --inspect node_modules/.bin/jest --runInBand",
     "demo": "svg-term --command 'node lib/demo.js' --out .github/demo.svg --window --from 50 --to 5000  --term hyper --profile hyper-chesterish",
-    "prepublish": "yarn run build",
-    "test": "yarn run jest"
+    "prepublish": "npm run build",
+    "test": "jest"
   },
   "dependencies": {
     "ansi-escapes": "^3.1.0",
     "intercept-stdout": "^0.1.2",
-    "react-reconciler": "^0.16.0",
+    "react-reconciler": "^0.17.2",
     "strip-ansi": "^5.0.0",
     "wcwidth": "^1.0.1",
     "wrap-ansi": "^4.0.0"

@@ -61,6 +61,10 @@ npm install --save react react-cli-renderer
 
 _note: You can use react-cli-renderer without babel, but you'll most likely want to write components [using JSX.](https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project)_
 
+### Compatibility with ink components
+
+[ink](https://github.com/vadimdemedes/ink) components do not work out-of-the-box with react-cli. However, if you're interested in re-using existing ink components, check out [ink-on-reactcli](https://github.com/cspotcode/ink-on-reactcli) for more information.
+
 ## About
 
 ReactCLI is analogous to ReactDOM or ReactNative. It just renders any updates dictated by React and the React reconciler to the command line. This means that you get all of the core features of React for free, like stateful components, context, refs, etc - in addition to being able to use third party libraries for things like state management. It also provides a couple core components that are useful for building out command line interfaces.

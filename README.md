@@ -1,3 +1,6 @@
+# This repository is now archived
+This project was originally created as an alternative to the [Ink](https://github.com/vadimdemedes/ink) library, as a separate renderer for a real React component tree, for the command line. Ink has since changed its architecture to also become just a separate renderer, allowing the use of the actual React library. With this change, react-cli adds no extra value beyond the capabilities of the Ink library, which has a much larger user-base and its better supported.
+
 # ReactCLI
 
 ReactCLI is a react renderer for the command line. All of the benefits of React, right in your terminal.
